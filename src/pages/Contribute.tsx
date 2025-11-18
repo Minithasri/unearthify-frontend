@@ -42,7 +42,7 @@ const Contribute = () => {
       <section className="bg-gradient-to-r from-gold/20 to-primary/20 py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
-            <Sparkles className="text-primary" size={32} />
+            <Sparkles className="text-[#83261d]" size={32} />
             <h1 className="text-4xl md:text-5xl font-bold text-foreground animate-fade-in">
               Contribute to Unearthify
             </h1>
@@ -135,7 +135,7 @@ const Contribute = () => {
               </div>
 
               {/* Submit Button */}
-              <Button type="submit" size="lg" className="w-full" variant="hero">
+              <Button type="submit" size="lg" className="w-full bg-[#83261d] hover:bg-[#83261d]/90"  >
                 <CheckCircle2 className="mr-2" size={20} />
                 Submit Contribution
               </Button>

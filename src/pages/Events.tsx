@@ -107,7 +107,7 @@ const Events = () => {
                     : "outline"
                 }
                 onClick={() => setSelectedLocation(location === "All Locations" ? "all" : location.toLowerCase())}
-                className="rounded-full"
+                className="rounded-full bg-[#83261d] text-white hover:bg-[#83261d] hover:text-white border border-[#83261d] hover:border-[#83261d]"
               >
                 {location}
               </Button>

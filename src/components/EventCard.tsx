@@ -23,11 +23,11 @@ const EventCard = ({ title, date, location, image, description }: EventCardProps
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{description}</p>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Calendar size={16} className="text-primary" />
+            <Calendar size={16} className="text-[#83261d]" />
             <span>{date}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <MapPin size={16} className="text-secondary" />
+            <MapPin size={16} className="text-[#83261d]" />
             <span>{location}</span>
           </div>
         </div>

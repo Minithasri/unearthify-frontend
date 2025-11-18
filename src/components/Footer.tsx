@@ -1,6 +1,6 @@
 import { Mail, Facebook, Instagram, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import Logo from "../assets/logo.jpg";
 const Footer = () => {
   return (
     <footer className="bg-card border-t border-border mt-20">
@@ -9,12 +9,7 @@ const Footer = () => {
           {/* About Section */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">U</span>
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Unearthify
-              </span>
+              <img src={Logo} alt="Logo" className="w-28" />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Celebrating and preserving the rich heritage of Indian art forms and the talented artists who bring them to life. Join us in unearthing the spirit of Indian culture.

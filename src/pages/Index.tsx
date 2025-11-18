@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search, Sparkles, Users, Calendar } from "lucide-react";
@@ -99,7 +100,7 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/artists">
-                <Button variant="hero" size="lg">
+                <Button variant="default" size="lg" className="bg-[#83261d] hover:bg-[#83261d]/90">
                   <Users className="mr-2" size={20} />
                   Explore Artists
                 </Button>
@@ -116,7 +117,7 @@ const Index = () => {
       </section>
 
       {/* Search Section */}
-      <section className="container mx-auto px-4 -mt-8">
+      <section className="container mx-auto px-4 mt-8">
         <div className="bg-card rounded-2xl shadow-cultural p-6 border border-border">
           <div className="flex gap-2">
             <div className="relative flex-1">
@@ -129,7 +130,7 @@ const Index = () => {
                 className="pl-10 h-12 text-base"
               />
             </div>
-            <Button size="lg">Search</Button>
+            <Button size="lg" className="bg-[#83261d] hover:bg-[#83261d]/90">Search</Button>
           </div>
         </div>
       </section>
@@ -142,7 +143,7 @@ const Index = () => {
             <p className="text-muted-foreground">Discover talented artists preserving Indian culture</p>
           </div>
           <Link to="/artists">
-            <Button variant="outline">View All</Button>
+            <Button variant="outline" className="border-[#83261d] hover:bg-[#83261d] text-[##83261d]">View All</Button>
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -165,7 +166,7 @@ const Index = () => {
               <p className="text-muted-foreground">Join us in celebrating Indian art and culture</p>
             </div>
             <Link to="/events">
-              <Button variant="outline">
+              <Button variant="outline" className="border-[#83261d] hover:bg-[#83261d] text-[##83261d]">
                 <Calendar className="mr-2" size={18} />
                 All Events
               </Button>
@@ -181,7 +182,7 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16">
-        <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-center text-primary-foreground relative overflow-hidden">
+        <div className="bg-[#83261d] rounded-2xl p-12 text-center text-primary-foreground relative overflow-hidden">
           <div className="pattern-overlay absolute inset-0 opacity-20" />
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Join the Unearthify Community</h2>
@@ -189,7 +190,7 @@ const Index = () => {
               Help us preserve and celebrate India's artistic heritage. Contribute information about artists, art forms, and events.
             </p>
             <Link to="/contribute">
-              <Button variant="outline" size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0 font-semibold">
+              <Button variant="outline" size="lg" className="bg-black text-white hover:text-black hover:bg-primary-foreground/90 border-0 font-semibold">
                 <Sparkles className="mr-2" size={20} />
                 Start Contributing
               </Button>

@@ -21,7 +21,7 @@ const ArtistCard = ({ name, artForm, region, image, onClick }: ArtistCardProps) 
       </div>
       <div className="p-4">
         <h3 className="font-semibold text-lg text-foreground mb-1">{name}</h3>
-        <p className="text-sm text-primary font-medium mb-1">{artForm}</p>
+        <p className="text-sm text-[#83261d] font-medium mb-1">{artForm}</p>
         <p className="text-sm text-muted-foreground">{region}</p>
       </div>
       <div className="h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />

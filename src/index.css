@@ -43,12 +43,12 @@ All colors MUST be HSL.
 
     --border: 40 25% 85%;
     --input: 40 25% 90%;
-    --ring: 25 95% 53%;
+    --ring: 25 72% 21%;
 
     --radius: 0.75rem;
 
     /* Custom design tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(25 95% 53% / 0.9), hsl(15 75% 50% / 0.9));
+    --gradient-hero: linear-gradient(135deg, hsla(25, 72%, 21%, 0.9), hsla(15, 89%, 25%, 0.9));
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(40 30% 96%));
     --shadow-cultural: 0 10px 40px -10px hsl(25 95% 53% / 0.25);
     --shadow-card: 0 4px 20px -4px hsl(25 30% 15% / 0.15);
@@ -87,7 +87,7 @@ All colors MUST be HSL.
     --input: 25 20% 25%;
     --ring: 25 95% 58%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(25 95% 58% / 0.8), hsl(15 70% 45% / 0.8));
+    --gradient-hero: linear-gradient(135deg, hsla(25, 72%, 21%, 0.9), hsla(15, 89%, 25%, 0.9));
     --gradient-card: linear-gradient(180deg, hsl(25 20% 16%), hsl(25 15% 20%));
     --shadow-cultural: 0 10px 40px -10px hsl(25 95% 58% / 0.3);
   }

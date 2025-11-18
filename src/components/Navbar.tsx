@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import Logo from "../assets/logo.jpg";
 
 const Navbar = () => {
   const location = useLocation();
@@ -23,12 +24,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform">
-              <span className="text-primary-foreground font-bold text-xl">U</span>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Unearthify
-            </span>
+            <img src={Logo} alt="Logo" className="w-28" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -39,7 +35,7 @@ const Navbar = () => {
                 to={link.path}
                 className={`px-4 py-2 rounded-md font-medium transition-all ${
                   isActive(link.path)
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-[#83261d] text-primary-foreground"
                     : "text-foreground hover:bg-muted"
                 }`}
               >
