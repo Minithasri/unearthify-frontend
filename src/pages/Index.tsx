@@ -10,7 +10,13 @@ import ArtistCard from "@/components/ArtistCard";
 import EventCard from "@/components/EventCard";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import heroBanner from "@/assets/hero-banner.jpg";
+import rukmini from "../assets/artistImage/rukmini-devi-arundale.jpg";
+import devi from "../assets/artistImage/Baua Devi.jpg"
+import utrapra from "../assets/artistImage/pandit-uttra.jpg"
 
+
+import a from "../assets/events/classical.jpg";
+import b from "../assets/events/folk art.jpg";
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedArtist, setSelectedArtist] = useState<any>(null);
@@ -34,27 +40,27 @@ const Index = () => {
   const featuredArtists = [
     {
       id: 1,
-      name: "Ramesh Kumar",
+      name: "Rukmini Devi Arundale",
       artForm: "Bharatanatyam Dance",
       region: "Tamil Nadu",
-      image: "https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=400",
-      bio: "A classical dancer with 20+ years of experience, preserving the ancient tradition of Bharatanatyam.",
+      image: rukmini,
+      bio: "Rukmini Devi Arundale was an Indian classical dancer and the key figure who revived and redefined Bharatanatyam in the 20th century. She founded Kalakshetra in Chennai, setting new artistic standards in dance, music, and traditional arts.",
     },
     {
       id: 2,
-      name: "Priya Sharma",
+      name: "Baua Devi",
       artForm: "Madhubani Painting",
       region: "Bihar",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
-      bio: "Award-winning Madhubani artist bringing traditional folk art to modern audiences.",
+      image: devi,
+      bio: "Baua Devi is a legendary Madhubani (Mithila) artist from Bihar, known for preserving traditional motifs through her vibrant, intricate paintings. She is one of the first women to gain national recognition for Mithila art and has been honored with the Padma Shri.",
     },
     {
       id: 3,
-      name: "Arjun Patel",
-      artForm: "Tabla Percussion",
-      region: "Gujarat",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-      bio: "Master tabla player trained in the Hindustani classical tradition.",
+      name: "Pandit Birju Maharaj",
+      artForm: "Kathak Dance",
+      region: "Uttar Pradesh",
+      image: utrapra,
+      bio: "Pandit Birju Maharaj was a legendary Kathak master known for his exceptional grace, storytelling, and rhythmic brilliance. As the torchbearer of the Lucknow gharana, he revolutionized Kathak through his choreography, teaching, and global performances.",
     },
   ];
 
@@ -63,14 +69,14 @@ const Index = () => {
       title: "Classical Dance Festival",
       date: "March 15, 2025",
       location: "Delhi",
-      image: "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=600",
+      image: a,
       description: "A celebration of India's rich classical dance heritage featuring performances from across the country.",
     },
     {
       title: "Folk Art Exhibition",
       date: "March 22, 2025",
       location: "Mumbai",
-      image: "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=600",
+      image: b,
       description: "Discover the vibrant world of Indian folk art with works from renowned artists.",
     },
   ];

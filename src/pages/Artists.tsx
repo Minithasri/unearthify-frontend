@@ -1,9 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ArtistCard from "@/components/ArtistCard";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import rukmini from "../assets/artistImage/rukmini-devi-arundale.jpg";
+import devi from "../assets/artistImage/Baua Devi.jpg";
+import utrapra from "../assets/artistImage/pandit-uttra.jpg";
+import maha from "../assets/artistImage/Jivya_Soma_Mashe-maha.jpg";
+import karnata from "../assets/artistImage/Krishna_Prasad_karnataka.jpg";
+import pandit from "../assets/artistImage/pandit.jpg";
+import rajas from "../assets/artistImage/sultan.jpg";
+import kuchi from "../assets/artistImage/vempati-kuchi.jpeg";
 
 const Artists = () => {
   const [selectedArtist, setSelectedArtist] = useState<any>(null);
@@ -13,75 +33,69 @@ const Artists = () => {
   const artists = [
     {
       id: 1,
-      name: "Ramesh Kumar",
+      name: "Rukmini Devi Arundale",
       artForm: "Bharatanatyam Dance",
       region: "Tamil Nadu",
-      image: "https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=400",
-      bio: "A classical dancer with 20+ years of experience, preserving the ancient tradition of Bharatanatyam. Known for powerful expressions and precise movements.",
+      image: rukmini,
+      bio: "Rukmini Devi Arundale was an Indian classical dancer and the key figure who revived and redefined Bharatanatyam in the 20th century. She founded Kalakshetra in Chennai, setting new artistic standards in dance, music, and traditional arts..",
     },
     {
       id: 2,
-      name: "Priya Sharma",
+      name: "Baua Devi",
       artForm: "Madhubani Painting",
       region: "Bihar",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
-      bio: "Award-winning Madhubani artist bringing traditional folk art to modern audiences. Her work has been featured in national galleries.",
+      image: devi,
+      bio: "Baua Devi is a legendary Madhubani (Mithila) artist from Bihar, known for preserving traditional motifs through her vibrant, intricate paintings. She is one of the first women to gain national recognition for Mithila art and has been honored with the Padma Shri.",
     },
     {
       id: 3,
-      name: "Arjun Patel",
+      name: "Pandit Divyang Vakil",
       artForm: "Tabla Percussion",
       region: "Gujarat",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-      bio: "Master tabla player trained in the Hindustani classical tradition. Has performed at prestigious venues worldwide.",
+      image: pandit,
+      bio: "Pandit Divyang Vakil is a renowned Indian tabla guru, composer, and founder of the Taalim School of Indian Music. He is widely respected for his innovative teaching methods and contributions to preserving and globalizing tabla education.",
     },
+
     {
       id: 4,
-      name: "Lakshmi Iyer",
+      name: "K. V. Krishna Prasad",
       artForm: "Carnatic Vocals",
       region: "Karnataka",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-      bio: "Renowned Carnatic vocalist with a melodious voice and deep understanding of ragas. Trained under legendary gurus.",
+      image: karnata,
+      bio: "K. V. Krishna Prasad is a Carnatic vocalist from Bengaluru, Karnataka, known for his soulful, traditional singing style and strong command over complex ragas. He is also a composer and performer who regularly appears in major classical music festivals across India.",
     },
     {
       id: 5,
-      name: "Vikram Singh",
+      name: "Pandit Birju Maharaj",
       artForm: "Kathak Dance",
       region: "Uttar Pradesh",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
-      bio: "Kathak maestro known for intricate footwork and expressive storytelling through dance. Has received multiple national awards.",
+      image: utrapra,
+
+      bio: "Pandit Birju Maharaj was a legendary Kathak master known for his exceptional grace, storytelling, and rhythmic brilliance. As the torchbearer of the Lucknow gharana, he revolutionized Kathak through his choreography, teaching, and global performances.",
     },
     {
       id: 6,
-      name: "Meera Reddy",
+      name: "Jivya Soma Mashe",
       artForm: "Warli Art",
       region: "Maharashtra",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-      bio: "Contemporary Warli artist preserving tribal art traditions while adding modern interpretations. Her work celebrates rural life.",
+      image: maha,
+      bio: "Jivya Soma Mashe was a pioneering Warli artist from Maharashtra who transformed the traditional ritual art into a globally recognized visual art form. His innovative storytelling style brought Warli painting into mainstream contemporary art, earning him major awards including the Padma Shri.",
     },
     {
       id: 7,
-      name: "Anil Joshi",
+      name: "Ustad Sultan Khan",
       artForm: "Sitar Music",
       region: "Rajasthan",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
-      bio: "Virtuoso sitar player combining traditional techniques with innovative compositions. Performs at international music festivals.",
+      image: rajas,
+      bio: "Ustad Sultan Khan was a legendary sarangi maestro known for his soulful tone and unmatched command over the instrument. A prominent Hindustani classical vocalist as well, he brought the sarangi to global audiences through his collaborations and performances.",
     },
     {
       id: 8,
-      name: "Kavita Nair",
+      name: "Dr. Vempati Chinna Satyam",
       artForm: "Kuchipudi Dance",
       region: "Andhra Pradesh",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
-      bio: "Graceful Kuchipudi dancer known for fluid movements and dramatic expressions. Runs a dance academy training the next generation.",
-    },
-    {
-      id: 9,
-      name: "Rajesh Gupta",
-      artForm: "Pattachitra Painting",
-      region: "Odisha",
-      image: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=400",
-      bio: "Master Pattachitra artist creating intricate scroll paintings depicting mythological stories. His work preserves centuries-old traditions.",
+      image: kuchi,
+      bio: "Dr. Vempati Chinna Satyam was a legendary Kuchipudi guru from Kuchipudi village, Andhra Pradesh, trained by Vedantam Lakshminarayana Sastry and Vempati Pedda Satyam. He choreographed over 180 solo pieces and 15 dance dramas, shaping modern Kuchipudi..",
     },
   ];
 
@@ -96,7 +110,8 @@ const Artists = () => {
             Discover Artists
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Meet the talented artists who are keeping India's rich cultural heritage alive through their dedication and artistry.
+            Meet the talented artists who are keeping India's rich cultural
+            heritage alive through their dedication and artistry.
           </p>
         </div>
       </section>
@@ -105,7 +120,9 @@ const Artists = () => {
       <section className="container mx-auto px-4 py-8">
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between bg-card p-4 rounded-lg border border-border">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-foreground">Found {artists.length} artists</span>
+            <span className="text-sm font-medium text-foreground">
+              Found {artists.length} artists
+            </span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Select value={filterRegion} onValueChange={setFilterRegion}>
@@ -139,7 +156,10 @@ const Artists = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {artists.map((artist) => (
             <div key={artist.id} className="animate-fade-in">
-              <ArtistCard {...artist} onClick={() => setSelectedArtist(artist)} />
+              <ArtistCard
+                {...artist}
+                onClick={() => setSelectedArtist(artist)}
+              />
             </div>
           ))}
         </div>
@@ -148,7 +168,10 @@ const Artists = () => {
       <Footer />
 
       {/* Artist Detail Modal */}
-      <Dialog open={!!selectedArtist} onOpenChange={() => setSelectedArtist(null)}>
+      <Dialog
+        open={!!selectedArtist}
+        onOpenChange={() => setSelectedArtist(null)}
+      >
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl">Artist Profile</DialogTitle>
@@ -163,12 +186,19 @@ const Artists = () => {
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">{selectedArtist.name}</h3>
-                <p className="text-primary font-semibold text-lg mb-1">{selectedArtist.artForm}</p>
-                <p className="text-muted-foreground mb-4 flex items-center gap-1">
-                  <span className="text-secondary">📍</span> {selectedArtist.region}
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  {selectedArtist.name}
+                </h3>
+                <p className="text-primary font-semibold text-lg mb-1">
+                  {selectedArtist.artForm}
                 </p>
-                <p className="text-foreground leading-relaxed">{selectedArtist.bio}</p>
+                <p className="text-muted-foreground mb-4 flex items-center gap-1">
+                  <span className="text-secondary">📍</span>{" "}
+                  {selectedArtist.region}
+                </p>
+                <p className="text-foreground leading-relaxed">
+                  {selectedArtist.bio}
+                </p>
               </div>
             </div>
           )}
