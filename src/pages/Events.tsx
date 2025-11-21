@@ -120,40 +120,40 @@ const Events = () => {
 
       {/* Location Filter */}
       <section className="container mx-auto px-4 py-8">
-        <div className="bg-card p-4 rounded-lg border border-border">
-          <div className="flex items-center gap-2 mb-4">
-            <Filter size={20} className="text-primary" />
-            <span className="font-medium text-foreground">
-              Filter by Location
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {locations.map((location) => (
-              <Button
-                key={location}
-                variant={
-                  selectedLocation ===
-                  (location === "All Locations"
-                    ? "all"
-                    : location.toLowerCase())
-                    ? "default"
-                    : "outline"
-                }
-                onClick={() =>
-                  setSelectedLocation(
-                    location === "All Locations"
-                      ? "all"
-                      : location.toLowerCase()
-                  )
-                }
-                className="rounded-full bg-[#83261d] text-white hover:bg-[#83261d] hover:text-white border border-[#83261d] hover:border-[#83261d]"
-              >
-                {location}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
+  <div className="bg-card p-4 rounded-lg border border-border">
+    <div className="flex items-center gap-2 mb-4">
+      <Filter size={20} className="text-primary" />
+      <span className="font-medium text-foreground">Filter by Location</span>
+    </div>
+
+    <div className="flex flex-wrap gap-2">
+      {locations.map((location) => {
+        const value =
+          location === "All Locations" ? "all" : location.toLowerCase();
+
+        const isActive = selectedLocation === value;
+
+        return (
+          <Button
+            key={location}
+            onClick={() => setSelectedLocation(value)}
+            className={`rounded-full border 
+              ${
+                isActive
+                  ? "bg-[#83261d] text-white border-[#83261d] hover:bg-white hover:text-[#83261d]"           // Active (highlight)
+                  : "bg-white text-[#83261d] border-[#83261d] hover:bg-[#83261d] hover:text-white"
+              }
+            `}
+            variant="outline"
+          >
+            {location}
+          </Button>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
 
       {/* Events Grid */}
       <section className="container mx-auto px-4 pb-16">

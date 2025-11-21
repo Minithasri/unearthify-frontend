@@ -137,7 +137,7 @@ const ArtForms = () => {
         open={!!selectedArtForm}
         onOpenChange={() => setSelectedArtForm(null)}
       >
-        <DialogContent className="max-w-xl rounded-xl  p-6">
+        <DialogContent className="max-w-xl rounded-xl p-6 h-[90vh] overflow-y-scroll">
           <DialogHeader>
             <DialogTitle className="text-xl flex items-center gap-3 font-semibold">
               <span className="text-3xl">{selectedArtForm?.icon}</span>
