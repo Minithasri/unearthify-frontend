@@ -140,7 +140,7 @@ const Events = () => {
             className={`rounded-full border 
               ${
                 isActive
-                  ? "bg-[#83261d] text-white border-[#83261d] hover:bg-white hover:text-[#83261d]"           // Active (highlight)
+                  ? "bg-[#83261d] text-white border-[#83261d]"           // Active (highlight)
                   : "bg-white text-[#83261d] border-[#83261d] hover:bg-[#83261d] hover:text-white"
               }
             `}
