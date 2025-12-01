@@ -167,11 +167,7 @@ const paint = allPaints.find(
       <Navbar />
       <div className="container mx-auto px-4 py-4">
         <Breadcrumbs
-          items={[
-            { label: "Art Forms", to: "/art-forms" },
-            { label: "Music" },
-            { label: paint.title },
-          ]}
+        
         />
       </div>
 
