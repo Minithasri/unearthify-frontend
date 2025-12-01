@@ -96,7 +96,6 @@
 // export default DanceTypes;
 /* DanceTypes.tsx */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
