@@ -174,7 +174,7 @@ const paint = allPaints.find((p) => p.title === titles);
 
             <div className="mt-8">
               <button onClick={handleApplyClick} className="px-6 py-3 bg-[#83261d] text-white rounded-lg hover:opacity-95">
-                Apply
+                Register
               </button>
             </div>
           </div>
