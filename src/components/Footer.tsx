@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-card border-t border-border mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
@@ -38,6 +38,31 @@ const Footer = () => {
               <li>
                 <Link to="/contribute" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Contribute
+                </Link>
+              </li>
+            </ul>
+          </div>
+           <div>
+            <h3 className="text-lg font-semibold mb-4 text-foreground">Art</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/artists" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Dance
+                </Link>
+              </li>
+              <li>
+                <Link to="/art-forms" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Music
+                </Link>
+              </li>
+              <li>
+                <Link to="/events" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Drama
+                </Link>
+              </li>
+              <li>
+                <Link to="/contribute" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Martial Art
                 </Link>
               </li>
             </ul>

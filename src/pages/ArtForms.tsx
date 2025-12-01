@@ -1,3 +1,4 @@
+// export default ArtForms;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
@@ -9,6 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 import dance from "../assets/form/dance.jpg";
 import drama from "../assets/form/Drama.jpg";
@@ -16,115 +18,173 @@ import painting from "../assets/form/Painting.jpg";
 import martial from "../assets/form/martial.jpg";
 import sculpture from "../assets/form/Sculpture.jpg";
 import music from "../assets/form/Music.jpg";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ArtForms = () => {
   const [selectedArtForm, setSelectedArtForm] = useState<any>(null);
+  const navigate = useNavigate();
 
+  // const artForms = [
+  //   {
+  //     id: 1,
+  //     title: "Dance",
+  //     icon: "💃",
+  //     image: dance,
+  //     route: "/dance",
+  //     description:
+  //       "Classical and folk traditions like Bharatanatyam, Kathak, Odissi & Kuchipudi.",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Painting",
+  //     icon: "🎨",
+  //     image: painting,
+  //     route: "/paint",
+  //     description:
+  //       "Folk and classical styles such as Madhubani, Warli, Pattachitra & Tanjore.",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Music",
+  //     icon: "🎵",
+  //     image: music,
+  //     route: "/music",
+  //     description:
+  //       "Hindustani & Carnatic traditions with instruments like Veena, Tabla & Sitar.",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Sculpture",
+  //     icon: "🗿",
+  //     image: sculpture,
+  //     route: "/sculpture",
+  //     description:
+  //       "Stone carving, temple sculpture, wood art & metal craftsmanship.",
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Martial Art",
+  //     icon: "🥋",
+  //     image: martial,
+  //     route: "/martial",
+  //     description:
+  //       "Kalaripayattu, Gatka & ancient Indian warrior art traditions.",
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "Drama",
+  //     icon: "🎭",
+  //     image: drama,
+  //     route: "/drama",
+  //     description: "Traditional theatre forms like Kathakali & Yakshagana.",
+  //   },
+  // ];
   const artForms = [
     {
       id: 1,
       title: "Dance",
       icon: "💃",
       image: dance,
+      route: "/art-forms/dance", // ✅ FIXED
       description:
-        "Ancient dance forms like Bharatanatyam, Kathak, Odissi, and Kuchipudi that tell stories through movement.",
-      fullDescription:
-        "Indian classical dance is a sophisticated art form with roots dating back thousands of years. Each style has its unique vocabulary of movements, expressions, and storytelling techniques. These dances are deeply connected to Hindu mythology and spiritual traditions, combining rhythm, music, and narrative in a mesmerizing performance.",
+        "Classical and folk traditions like Bharatanatyam, Kathak, Odissi & Kuchipudi.",
     },
     {
       id: 2,
       title: "Painting",
       icon: "🎨",
       image: painting,
+      route: "/art-forms/paint", // ✅ FIXED
       description:
-        "Folk and classical painting styles including Madhubani, Warli, Pattachitra, and Tanjore art.",
-      fullDescription:
-        "Indian traditional painting encompasses diverse regional styles, each with distinctive techniques and themes. From the intricate line work of Madhubani to the geometric patterns of Warli, these art forms use natural colors and traditional materials. They often depict mythological stories, nature, and daily life, preserving cultural narratives across generations.",
+        "Folk and classical styles such as Madhubani, Warli, Pattachitra & Tanjore.",
     },
     {
       id: 3,
       title: "Music",
       icon: "🎵",
       image: music,
+      route: "/art-forms/music", // ✅ FIXED
       description:
-        "Hindustani and Carnatic music traditions with instruments like sitar, tabla, veena, and mridangam.",
-      fullDescription:
-        "Indian classical music is one of the world's oldest living musical traditions. Divided into Hindustani (North) and Carnatic (South) styles, it features complex ragas (melodic frameworks) and talas (rhythmic cycles). The music is both mathematical and deeply emotional, capable of evoking specific moods and times of day.",
+        "Hindustani & Carnatic traditions with instruments like Veena, Tabla & Sitar.",
     },
     {
       id: 4,
       title: "Sculpture",
       icon: "🗿",
       image: sculpture,
+      route: "/art-forms/sculpture", // ✅ FIXED
       description:
-        "Temple sculptures, stone carving, wood carving, and metal craft traditions.",
-      fullDescription:
-        "Indian sculpture and craft traditions showcase extraordinary skill in working with various materials. From intricate temple carvings to delicate metal work, these crafts reflect centuries of refined techniques. Artisans create everything from monumental religious sculptures to everyday decorative items, each piece embodying cultural and spiritual significance.",
+        "Stone carving, temple sculpture, wood art & metal craftsmanship.",
     },
     {
       id: 5,
       title: "Martial Art",
-      icon: "🧵",
+      icon: "🥋",
       image: martial,
+      route: "/art-forms/martial", // ✅ FIXED
       description:
-        "Weaving, embroidery, block printing, and dyeing techniques from different regions.",
-      fullDescription:
-        "India's textile heritage is among the richest in the world. Each region has developed unique weaving, printing, and embroidery techniques over centuries. From the intricate brocades of Varanasi to the vibrant tie-dye of Rajasthan, Indian textiles combine aesthetic beauty with functional design, often incorporating symbolic patterns and motifs.",
+        "Kalaripayattu, Gatka & ancient Indian warrior art traditions.",
     },
     {
       id: 6,
       title: "Drama",
       icon: "🎭",
       image: drama,
-      description:
-        "Traditional theatre forms like Kathakali, Yakshagana, and folk performances.",
-      fullDescription:
-        "Indian traditional theatre combines dance, music, and dramatic storytelling in spectacular performances. Forms like Kathakali use elaborate costumes and makeup to portray epic stories, while folk theatre traditions vary widely across regions. These performances are often ritualistic and community-based, serving both entertainment and educational purposes.",
+      route: "/art-forms/drama", // ✅ FIXED
+      description: "A performing art that tells stories through expressive acting, dialogue, and emotion.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-[#FAF4EE] to-[#FFF]">
       <Navbar />
 
-      {/* Header */}
-      <section className="bg-gradient-to-r from-secondary/10 to-accent/10 py-16">
+      {/* HEADER */}
+      <section className="bg-gradient-to-r from-accent/10 to-primary/10 py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in">
             Indian Art Forms
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Explore the diverse and rich artistic traditions that have
-            flourished across India for millennia.
+            Discover India’s diverse artistic heritage — a blend of culture,
+            tradition, and creativity.
           </p>
         </div>
       </section>
 
-      {/* Art Forms Grid */}
+      <div className="flex items-center justify-start ml-16 mt-6">
+        <Breadcrumbs />
+      </div>
+
+      {/* ART FORM GRID */}
       <section className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {artForms.map((artForm, index) => (
             <div
               key={artForm.id}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="animate-fade-in transform transition-all "
+              style={{ animationDelay: `${index * 0.12}s` }}
             >
-              <ArtFormCard
-                {...artForm}
-                onClick={() => setSelectedArtForm(artForm)}
-              />
+              <div
+                onClick={() => navigate(artForm.route)}
+                className="cursor-pointer rounded-3xl overflow-hidden bg-white shadow-md hover:shadow-2xl transition p-5 group"
+              >
+                <div className="relative h-52 overflow-hidden rounded-2xl">
+                  <img
+                    src={artForm.image}
+                    alt={artForm.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                  {/* <div className="absolute bottom-3 right-3 text-4xl">
+                    {artForm.icon}
+                  </div> */}
+                </div>
+
+                <h2 className="text-2xl font-bold mt-4 text-[#6F1D1B]">
+                  {artForm.title}
+                </h2>
+                <p className="text-gray-600 mt-2">{artForm.description}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -132,118 +192,55 @@ const ArtForms = () => {
 
       <Footer />
 
-      {/* Art Form Detail Modal */}
+      {/* MODAL */}
       <Dialog
         open={!!selectedArtForm}
         onOpenChange={() => setSelectedArtForm(null)}
       >
-        <DialogContent className="max-w-xl rounded-xl p-6 h-[90vh] overflow-y-scroll">
+        <DialogContent className="max-w-xl rounded-2xl shadow-2xl p-8 border border-[#E8C5A6]">
           <DialogHeader>
-            <DialogTitle className="text-xl flex items-center gap-3 font-semibold">
-              <span className="text-3xl">{selectedArtForm?.icon}</span>
+            <DialogTitle className="flex items-center gap-3 text-2xl font-bold text-[#6F1D1B]">
+              <span className="text-4xl">{selectedArtForm?.icon}</span>
               {selectedArtForm?.title}
             </DialogTitle>
           </DialogHeader>
 
-          {/* Form */}
-          <form className="space-y-4 mt-2">
-            <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-foreground font-medium">
-                  Your Name <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Enter your full name"
-                  required
-                  className="h-11"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="Number" className="text-foreground font-medium">
-                  Phone Number <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="Number"
-                  type="tel"
-                  placeholder="Enter your full name"
-                  required
-                  className="h-11"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="age" className="text-foreground font-medium">
-                  Age <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="age"
-                  type="tel"
-                  placeholder="Enter your full name"
-                  required
-                  className="h-11"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="Location"
-                  className="text-foreground font-medium"
-                >
-                  Location <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="Location"
-                  type="tel"
-                  placeholder="Enter your full name"
-                  required
-                  className="h-11"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="type" className="text-foreground font-medium">
-                Gender <span className="text-destructive">*</span>
-              </Label>
-              <Select required>
-                <SelectTrigger className="h-11">
-                  <SelectValue placeholder="Select a gender" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="artform">Male</SelectItem>
-                  <SelectItem value="event">Female</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* ⬇ FULL WIDTH FIELD */}
-
-            <div className="space-y-2">
-              <Label
-                htmlFor="description"
-                className="text-foreground font-medium"
-              >
-                Address <span className="text-destructive">*</span>
-              </Label>
-              <Textarea
-                id="description"
-                placeholder="Enter your address"
-                required
-                className="min-h-[80px] resize-none"
+          {/* FORM */}
+          <form className="space-y-4 mt-4">
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                placeholder="Name"
+                className="rounded-lg border px-3 py-2 border-[#D9A282] focus:ring-0"
               />
+              <input
+                placeholder="Number"
+                className="rounded-lg border px-3 py-2 border-[#D9A282] focus:ring-0"
+              />
+              <input
+                placeholder="Age"
+                className="rounded-lg border px-3 py-2 border-[#D9A282] focus:ring-0"
+              />
+              <input
+                placeholder="Location"
+                className="rounded-lg border px-3 py-2 border-[#D9A282] focus:ring-0"
+              />
+              <select className="col-span-2 rounded-lg border px-3 py-2 border-[#D9A282]">
+                <option>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
             </div>
 
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              size="lg"
-              className="w-full bg-[#83261d] hover:bg-[#83261d]/90"
-            >
-              <CheckCircle2 className="mr-2" size={20} />
+            <textarea
+              rows={3}
+              placeholder="Address"
+              className="w-full rounded-lg border px-3 py-2 border-[#D9A282] focus:ring-0"
+            />
+
+            <button className="w-full bg-[#6F1D1B] hover:bg-[#5A1716] text-white py-2 rounded-lg font-semibold transition">
               Submit
-            </Button>
+            </button>
           </form>
         </DialogContent>
       </Dialog>
