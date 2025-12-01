@@ -1,76 +1,98 @@
+// /* eslint-disable @typescript-eslint/no-explicit-any */
+// import { useNavigate } from "react-router-dom";
+
+// interface ArtFormCardProps {
+//   title: string;
+//   category: string; // dance, martial, music
+//   description: string;
+//   image: string;
+// }
+
+// const ArtFormCard = ({
+//   title,
+//   category,
+//   description,
+//   image,
+// }: ArtFormCardProps) => {
+//   const navigate = useNavigate();
+
+//   const handleClick = () => {
+//     navigate(`/art-forms/${category}/${title}`);
+//   };
+
+//   return (
+//     <div
+//       onClick={handleClick}
+//       className="group cursor-pointer bg-card rounded-2xl p-2 border border-border
+//                  hover:border-primary hover:shadow-xl transition-all duration-300"
+//     >
+//       {/* IMAGE */}
+//       <div className="overflow-hidden rounded-xl mb-4">
+//         <img
+//           src={image}
+//           alt={title}
+//           className="w-full h-44 object-cover group-hover:scale-110 
+//                      transition-transform duration-500"
+//         />
+//       </div>
+
+//       {/* TITLE */}
+//       <h3 className="text-xl font-semibold text-center text-foreground mb-2">
+//         {title}
+//       </h3>
+
+//       {/* DESCRIPTION */}
+//       <p className="text-sm text-center text-muted-foreground mb-3">
+//         {description}
+//       </p>
+//     </div>
+//   );
+// };
+
+// export default ArtFormCard;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useNavigate } from "react-router-dom";
+
 interface ArtFormCardProps {
   title: string;
+  category: string;
   description: string;
   image: string;
-  onClick: () => void;
 }
-import dance from "../assets/form/dance.jpg";
-import drama from "../assets/form/Drama.jpg";
-import painting from "../assets/form/Painting.jpg";
-import martial from "../assets/form/martial.jpg";
-import sculpture from "../assets/form/Sculpture.jpg";
-import music from "../assets/form/Music.jpg";
 
-export const artForms = [
-  {
-    title: "Dance",
-    description: "Classical, folk and contemporary dance forms.",
-    image: dance,
-  },
-  {
-    title: "Drama",
-    description: "Theatre, acting and stage performance arts.",
-    image: drama,
-  },
-  {
-    title: "Painting",
-    description: "Traditional and modern painting forms.",
-    image: painting,
-  },
-  {
-    title: "Music",
-    description: "Vocal and instrumental music traditions.",
-    image: music,
-  },
-  {
-    title: "Sculpture",
-    description: "Stone, clay and metal sculpture arts.",
-    image: sculpture,
-  },
-  {
-    title: "Martial Arts",
-    description: "Ancient Indian martial art forms.",
-    image: martial,
-  },
-];
+const ArtFormCard = ({ title, category, description, image }: ArtFormCardProps) => {
+  const navigate = useNavigate();
 
-const ArtFormCard = ({
-  title,
-  description,
-  image,
-  onClick,
-}: ArtFormCardProps) => {
+  const handleClick = () => {
+    navigate(`/art-forms/${category}/${title}`);
+  };
+
   return (
     <div
-      onClick={onClick}
-      className="group cursor-pointer bg-card rounded-xl p-5 border border-border hover:border-primary hover:shadow-lg transition-all"
+      onClick={handleClick}
+      className="group cursor-pointer bg-card rounded-2xl p-4 border border-border
+                 hover:border-primary hover:shadow-2xl transition-all duration-300
+                 w-full max-w-sm mx-auto"
     >
       {/* IMAGE */}
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-40 object-cover rounded-lg mb-4 group-hover:scale-105 transition-transform"
-      />
+      <div className="overflow-hidden rounded-xl mb-5">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-60 object-cover group-hover:scale-110 
+                     transition-transform duration-500"
+        />
+      </div>
 
       {/* TITLE */}
-      <h3 className="text-xl font-semibold text-center text-foreground mb-2">{title}</h3>
+      <h3 className="text-2xl font-semibold text-center text-foreground mb-3">
+        {title}
+      </h3>
 
-     
-
-      {/* APPLY BUTTON
-      <button className="w-full bg-primary text-white  text-xs py-2 rounded-md font-semibold hover:bg-primary/90 transition">
-        Apply →
-      </button> */}
+      {/* DESCRIPTION */}
+      <p className="text-[15px] text-center text-muted-foreground mb-3">
+        {description}
+      </p>
     </div>
   );
 };

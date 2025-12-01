@@ -60,6 +60,7 @@ import Martial from "./pages/Martial";
 import DramaTypes from "./pages/DramaTypes";
 import Musics from "./pages/Musics";
 import Dramas from "./pages/Dramas";
+import ScrollTop from "./components/ScrollTop";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +70,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+       <ScrollTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/artists" element={<Artists />} />

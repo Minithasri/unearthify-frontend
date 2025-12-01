@@ -24,61 +24,6 @@ const ArtForms = () => {
   const [selectedArtForm, setSelectedArtForm] = useState<any>(null);
   const navigate = useNavigate();
 
-  // const artForms = [
-  //   {
-  //     id: 1,
-  //     title: "Dance",
-  //     icon: "💃",
-  //     image: dance,
-  //     route: "/dance",
-  //     description:
-  //       "Classical and folk traditions like Bharatanatyam, Kathak, Odissi & Kuchipudi.",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Painting",
-  //     icon: "🎨",
-  //     image: painting,
-  //     route: "/paint",
-  //     description:
-  //       "Folk and classical styles such as Madhubani, Warli, Pattachitra & Tanjore.",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Music",
-  //     icon: "🎵",
-  //     image: music,
-  //     route: "/music",
-  //     description:
-  //       "Hindustani & Carnatic traditions with instruments like Veena, Tabla & Sitar.",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Sculpture",
-  //     icon: "🗿",
-  //     image: sculpture,
-  //     route: "/sculpture",
-  //     description:
-  //       "Stone carving, temple sculpture, wood art & metal craftsmanship.",
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Martial Art",
-  //     icon: "🥋",
-  //     image: martial,
-  //     route: "/martial",
-  //     description:
-  //       "Kalaripayattu, Gatka & ancient Indian warrior art traditions.",
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Drama",
-  //     icon: "🎭",
-  //     image: drama,
-  //     route: "/drama",
-  //     description: "Traditional theatre forms like Kathakali & Yakshagana.",
-  //   },
-  // ];
   const artForms = [
     {
       id: 1,
