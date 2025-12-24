@@ -104,7 +104,7 @@ const Index = () => {
   const upcomingEvents = [
     {
       title: "Classical Dance Festival",
-      date: "March 15, 2025",
+      date: "March 15, 2026",
       location: "Delhi",
       image: a,
       description:
@@ -112,7 +112,7 @@ const Index = () => {
     },
     {
       title: "Folk Art Exhibition",
-      date: "March 22, 2025",
+      date: "March 22, 2026",
       location: "Mumbai",
       image: b,
       description:

@@ -29,7 +29,7 @@ const Events = () => {
   const events = [
     {
       title: "Classical Dance Festival",
-      date: "March 15, 2025",
+      date: "March 15, 2026",
       location: "Delhi",
       image: a,
       description:
@@ -37,7 +37,7 @@ const Events = () => {
     },
     {
       title: "Folk Art Exhibition",
-      date: "March 22, 2025",
+      date: "March 22, 2026",
       location: "Mumbai",
       image: b,
       description:
@@ -45,7 +45,7 @@ const Events = () => {
     },
     {
       title: "Carnatic Music Concert",
-      date: "April 5, 2025",
+      date: "April 5, 2026",
       location: "Chennai",
       image: c,
       description:
@@ -53,7 +53,7 @@ const Events = () => {
     },
     {
       title: "Handicraft Fair",
-      date: "April 12, 2025",
+      date: "April 12, 2026",
       location: "Bangalore",
       image: d,
       description:
@@ -61,7 +61,7 @@ const Events = () => {
     },
     {
       title: "Kathak Performance",
-      date: "April 20, 2025",
+      date: "April 20, 2026",
       location: "Delhi",
       image: e,
       description:
@@ -69,7 +69,7 @@ const Events = () => {
     },
     {
       title: "Textile & Weaving Workshop",
-      date: "May 3, 2025",
+      date: "May 3, 2026",
       location: "Mumbai",
       image: f,
       description:
@@ -77,7 +77,7 @@ const Events = () => {
     },
     {
       title: "Temple Architecture Tour",
-      date: "May 15, 2025",
+      date: "May 15, 2026",
       location: "Chennai",
       image: g,
       description:
@@ -85,7 +85,7 @@ const Events = () => {
     },
     {
       title: "Tabla & Percussion Festival",
-      date: "May 22, 2025",
+      date: "May 22, 2026",
       location: "Kolkata",
       image: h,
       description:

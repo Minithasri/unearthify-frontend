@@ -93,7 +93,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-6 text-center">
           <p className="text-muted-foreground text-sm">
-            © 2025 Unearthify. Preserving Indian art and culture with love.
+            © 2026 Unearthify. Preserving Indian art and culture with love.
           </p>
         </div>
       </div>
