@@ -10,7 +10,7 @@ interface EventCardProps {
 
 const EventCard = ({ title, date, location, image, description }: EventCardProps) => {
   return (
-    <div className="group bg-card rounded-xl overflow-hidden border border-border hover-lift transition-all">
+    <div className="group bg-card rounded-xl overflow-hidden border border-border transition-all hover:shadow-2xl">
       <div className="aspect-video overflow-hidden bg-muted">
         <img
           src={image}

@@ -27,8 +27,10 @@ import kuchi from "../assets/artistImage/vempati-kuchi.jpeg";
 
 const Artists = () => {
   const [selectedArtist, setSelectedArtist] = useState<any>(null);
-  const [sortBy, setSortBy] = useState("name");
-  const [filterRegion, setFilterRegion] = useState("all");
+  // const [sortBy, setSortBy] = useState("name");
+  // const [filterRegion, setFilterRegion] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredArtists, setFilteredArtists] = useState<any[]>([]);
 
   const artists = [
     {
@@ -36,8 +38,9 @@ const Artists = () => {
       name: "Rukmini Devi Arundale",
       artForm: "Bharatanatyam Dance",
       region: "Tamil Nadu",
+      
       image: rukmini,
-      bio: "Rukmini Devi Arundale was an Indian classical dancer and the key figure who revived and redefined Bharatanatyam in the 20th century. She founded Kalakshetra in Chennai, setting new artistic standards in dance, music, and traditional arts..",
+      bio: "Rukmini Devi Arundale was an Indian classical dancer and the key figure who revived and redefined Bharatanatyam in the 20th century. She founded Kalakshetra in Chennai, setting new artistic standards in dance, music, and traditional arts.",
     },
     {
       id: 2,
@@ -45,7 +48,7 @@ const Artists = () => {
       artForm: "Madhubani Painting",
       region: "Bihar",
       image: devi,
-      bio: "Baua Devi is a legendary Madhubani (Mithila) artist from Bihar, known for preserving traditional motifs through her vibrant, intricate paintings. She is one of the first women to gain national recognition for Mithila art and has been honored with the Padma Shri.",
+      bio: "Baua Devi is a legendary Madhubani (Mithila) artist from Bihar, known for preserving traditional motifs through her vibrant, intricate paintings. She is one of the first women to gain national recognition for Mithila art and has been honoured with the Padma Shri.",
     },
     {
       id: 3,
@@ -95,7 +98,7 @@ const Artists = () => {
       artForm: "Kuchipudi Dance",
       region: "Andhra Pradesh",
       image: kuchi,
-      bio: "Dr. Vempati Chinna Satyam was a legendary Kuchipudi guru from Kuchipudi village, Andhra Pradesh, trained by Vedantam Lakshminarayana Sastry and Vempati Pedda Satyam. He choreographed over 180 solo pieces and 15 dance dramas, shaping modern Kuchipudi..",
+      bio: "Dr. Vempati Chinna Satyam was a legendary Kuchipudi guru from Kuchipudi village, Andhra Pradesh, trained by Vedantam Lakshminarayana Sastry and Vempati Pedda Satyam. He choreographed over 180 solo pieces and 15 dance dramas, shaping modern Kuchipudi.",
     },
   ];
 
@@ -124,7 +127,16 @@ const Artists = () => {
               Found {artists.length} artists
             </span>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <div>
+            {/* search bar */}
+            <input
+              type="text"
+              placeholder="Search artists..."
+              className="w-full sm:w-64 px-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          {/* <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Select value={filterRegion} onValueChange={setFilterRegion}>
               <SelectTrigger className="w-full sm:w-[180px]">
                 <SelectValue placeholder="Filter by region" />
@@ -147,21 +159,47 @@ const Artists = () => {
                 <SelectItem value="region">Region</SelectItem>
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Artists Grid */}
       <section className="container mx-auto px-4 pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {artists.map((artist) => (
-            <div key={artist.id} className="animate-fade-in">
-              <ArtistCard
-                {...artist}
-                onClick={() => setSelectedArtist(artist)}
-              />
-            </div>
-          ))}
+          {/* Filtered Artists */}
+          {
+            searchQuery
+              ? artists
+                  .filter((artist) =>
+                    artist.name.toLowerCase().includes(searchQuery.toLowerCase())
+                  )
+                  .map((artist) => (
+                    <div key={artist.id} className="animate-fade-in">
+                      <ArtistCard
+                        {...artist}
+                        onClick={() => setSelectedArtist(artist)}
+                      />
+                    </div>
+                  ))
+              : artists.map((artist) => (
+                  <div key={artist.id} className="animate-fade-in">
+                    <ArtistCard
+                      {...artist}
+                      onClick={() => setSelectedArtist(artist)}
+                    />
+                  </div>
+                ))
+          }
+          {/* No results found. */}
+          {searchQuery &&
+            artists.filter((artist) =>
+              artist.name.toLowerCase().includes(searchQuery.toLowerCase())
+            ).length === 0 && (
+              <p className="text-muted-foreground col-span-full text-center">
+                No artists found matching "{searchQuery}"
+              </p>
+            )}
+
         </div>
       </section>
 
@@ -174,7 +212,7 @@ const Artists = () => {
       >
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-2xl">Artist Profile</DialogTitle>
+            <DialogTitle className="text-2xl">{selectedArtist?.name}</DialogTitle>
           </DialogHeader>
           {selectedArtist && (
             <div className="space-y-4">

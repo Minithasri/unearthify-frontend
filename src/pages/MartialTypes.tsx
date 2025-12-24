@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import gatka from "../assets/martial/6-barun-k_datta_05-during-gatka-demonstration-this-snake-like-weapon-can-hurt-anyone-who-dares-to-stand-too-close.jpg";
 import kalaripayattu from "../assets/martial/kalaripayattu3.jpg";
 import silambattam from "../assets/martial/silambattam-course-shara.jpg";
 import thoda from "../assets/martial/thoda.jpg";
+import ArtFormModel from "./ArtFormModel";
 type PaintDetails = {
   shortDescription: string;
   styleOrigin: string;
@@ -96,18 +91,6 @@ const MartialTypes: React.FC = () => {
     (d) => d.title.toLowerCase().trim() === titles?.toLowerCase().trim()
   );
 
-  const [selectedArtForm, setSelectedArtForm] = useState<PaintArtForm | null>(
-    null
-  );
-  const [formState, setFormState] = useState({
-    name: "",
-    phone: "",
-    age: "",
-    location: "",
-    gender: "",
-    address: "",
-  });
-
   if (!paint)
     return (
       <div className="min-h-screen">
@@ -116,34 +99,6 @@ const MartialTypes: React.FC = () => {
         <Footer />
       </div>
     );
-
-  const handleApplyClick = () => {
-    setSelectedArtForm(paint);
-    setFormState({
-      name: "",
-      phone: "",
-      age: "",
-      location: "",
-      gender: "",
-      address: "",
-    });
-  };
-
-  const handleFormChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormState((s) => ({ ...s, [name]: value }));
-  };
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Application submitted for", selectedArtForm?.title, formState);
-    alert("Application submitted successfully!");
-    setSelectedArtForm(null);
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -205,120 +160,13 @@ const MartialTypes: React.FC = () => {
             </div>
 
             <div className="mt-8">
-              <button
-                onClick={handleApplyClick}
-                className="px-6 py-3 bg-[#83261d] text-white rounded-lg hover:opacity-95"
-              >
-                Register
-              </button>
+              <ArtFormModel title={paint.title} />
             </div>
           </div>
         </div>
       </section>
 
       <Footer />
-
-      {/* Modal */}
-      <Dialog
-        open={!!selectedArtForm}
-        onOpenChange={() => setSelectedArtForm(null)}
-      >
-        <DialogContent className="max-w-xl rounded-xl p-6">
-          <DialogHeader>
-            <DialogTitle className="text-xl flex items-center gap-3 font-semibold">
-              {selectedArtForm?.title}
-            </DialogTitle>
-          </DialogHeader>
-
-          {selectedArtForm && (
-            <form className="space-y-4 mt-2" onSubmit={handleFormSubmit}>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="font-medium text-sm">Name</label>
-                  <input
-                    name="name"
-                    value={formState.name}
-                    onChange={handleFormChange}
-                    type="text"
-                    placeholder="Enter name"
-                    className="w-full rounded-md border border-orange-300 px-3 py-2 text-sm focus:ring-0 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="font-medium text-sm">Number</label>
-                  <input
-                    name="phone"
-                    value={formState.phone}
-                    onChange={handleFormChange}
-                    type="text"
-                    placeholder="Enter number"
-                    className="w-full rounded-md border border-orange-300 px-3 py-2 text-sm focus:ring-0 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="font-medium text-sm">Age</label>
-                  <input
-                    name="age"
-                    value={formState.age}
-                    onChange={handleFormChange}
-                    type="text"
-                    placeholder="Age"
-                    className="w-full rounded-md border border-orange-300 px-3 py-2 text-sm focus:ring-0 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="font-medium text-sm">Location</label>
-                  <input
-                    name="location"
-                    value={formState.location}
-                    onChange={handleFormChange}
-                    type="text"
-                    placeholder="City / place"
-                    className="w-full rounded-md border border-orange-300 px-3 py-2 text-sm focus:ring-0 focus:outline-none"
-                  />
-                </div>
-
-                <div className="col-span-2">
-                  <label className="font-medium text-sm">Gender</label>
-                  <select
-                    name="gender"
-                    value={formState.gender}
-                    onChange={handleFormChange}
-                    className="w-full rounded-md border border-orange-300 px-3 py-2 text-sm focus:ring-0 focus:outline-none"
-                  >
-                    <option>Select</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="font-medium text-sm">Address</label>
-                <textarea
-                  name="address"
-                  value={formState.address}
-                  onChange={handleFormChange}
-                  placeholder="Full address"
-                  rows={3}
-                  className="w-full rounded-md border border-orange-300 px-3 py-2 text-sm focus:ring-0 focus:outline-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-[#83261d] hover:bg-[#83261d] transition text-white font-semibold py-2 rounded-md"
-              >
-                Submit
-              </button>
-            </form>
-          )}
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };

@@ -10,8 +10,8 @@ import varaliPainting from "../assets/paint/varali painting.jpg";
 const artForms = [
   { id: 1, title: "Madhubani", image: Madhubani },
   { id: 2, title: "Warli", image: varaliPainting },
-  { id: 3, title: "mandala", image: mandalaArt },
-  { id: 4, title: "kalamkari", image: kalamkari },
+  { id: 3, title: "Mandala", image: mandalaArt },
+  { id: 4, title: "Kalamkari", image: kalamkari },
 ];
 
 const Paint = () => {

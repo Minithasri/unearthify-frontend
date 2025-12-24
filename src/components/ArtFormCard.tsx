@@ -70,12 +70,10 @@ const ArtFormCard = ({ title, category, description, image }: ArtFormCardProps) 
   return (
     <div
       onClick={handleClick}
-      className="group cursor-pointer bg-card rounded-2xl p-4 border border-border
-                 hover:border-primary hover:shadow-2xl transition-all duration-300
-                 w-full max-w-sm mx-auto"
+      className="w-full group cursor-pointer bg-card rounded-2xl hover:shadow-2xl transition-all duration-300"
     >
       {/* IMAGE */}
-      <div className="overflow-hidden rounded-xl mb-5">
+      <div className="overflow-hidden rounded-tl-xl rounded-tr-xl mb-5">
         <img
           src={image}
           alt={title}

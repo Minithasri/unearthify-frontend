@@ -64,7 +64,7 @@ const Index = () => {
       artForm: "Madhubani Painting",
       region: "Bihar",
       image: devi,
-      bio: "Baua Devi is a legendary Madhubani (Mithila) artist from Bihar, known for preserving traditional motifs through her vibrant, intricate paintings. She is one of the first women to gain national recognition for Mithila art and has been honored with the Padma Shri.",
+      bio: "Baua Devi is a legendary Madhubani (Mithila) artist from Bihar, known for preserving traditional motifs through her vibrant, intricate paintings. She is one of the first women to gain national recognition for Mithila art and has been honoured with the Padma Shri.",
     },
     {
       id: 3,
@@ -244,7 +244,7 @@ const Index = () => {
           </Link>
         </div>
         <div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid md:grid-cols-3 gap-6 grid-cols-1">
             {artForms.map((item) => (
               <ArtFormCard
                 key={item.id}
@@ -322,7 +322,7 @@ const Index = () => {
       >
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl">Artist Profile</DialogTitle>
+            <DialogTitle className="text-2xl"></DialogTitle>
           </DialogHeader>
           {selectedArtist && (
             <div className="space-y-4">
