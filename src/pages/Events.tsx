@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -15,12 +16,12 @@ const Events = () => {
     if (!imagePath) return "";
     if (imagePath.startsWith("http")) return imagePath;
     const cleanPath = imagePath.startsWith("/") ? imagePath.substring(1) : imagePath;
-    return `http://localhost:5000/${cleanPath}`;
+    return `${import.meta.env.VITE_API_URL}/${cleanPath}`;
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/events")
+      .get(`${import.meta.env.VITE_API_URL}/api/events`)
       .then((response) => {
         const data = Array.isArray(response.data) ? response.data : response.data.data;
         setEventList(data || []);

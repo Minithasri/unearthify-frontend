@@ -155,7 +155,7 @@ const Contribute = () => {
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
       try {
-        const response = await axios.post("http://localhost:5000/api/contribute", formData);
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/contribute`, formData);
         
         if (response.status === 200 || response.status === 201) {
           setShowSuccess(true);

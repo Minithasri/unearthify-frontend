@@ -30,13 +30,13 @@ const Artists = () => {
     if (imagePath.startsWith("http")) return imagePath;
     // Remove leading slash if it exists and prefix with backend URL
     const cleanPath = imagePath.startsWith("/") ? imagePath.substring(1) : imagePath;
-    return `http://localhost:5000/${cleanPath}`;
+    return `${import.meta.env.VITE_API_URL}/${cleanPath}`;
   };
 
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/artists")
+      .get(`${import.meta.env.VITE_API_URL}/api/artists`)
       .then((response) => {
         // Handle both direct array or nested data property
         const data = Array.isArray(response.data) ? response.data : response.data.data;

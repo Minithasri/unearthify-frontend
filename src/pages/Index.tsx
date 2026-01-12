@@ -52,12 +52,12 @@ const Index = () => {
     if (!imagePath) return "";
     if (imagePath.startsWith("http")) return imagePath;
     const cleanPath = imagePath.startsWith("/") ? imagePath.substring(1) : imagePath;
-    return `http://localhost:5000/${cleanPath}`;
+    return `${import.meta.env.VITE_API_URL}/${cleanPath}`;
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/artists")
+      .get(`${import.meta.env.VITE_API_URL}/api/artists`)
       .then((response) => {
         const data = Array.isArray(response.data) ? response.data : response.data.data;
         setArtistList(data || []);
@@ -65,7 +65,7 @@ const Index = () => {
       .catch((error) => console.error("Error fetching artists:", error));
 
     axios
-      .get("http://localhost:5000/api/artforms")
+      .get(`${import.meta.env.VITE_API_URL}/api/artforms`)
       .then((response) => {
         const data = Array.isArray(response.data) ? response.data : response.data.data;
         setArtFormList(data || []);
@@ -73,7 +73,7 @@ const Index = () => {
       .catch((error) => console.error("Error fetching art forms:", error));
 
     axios
-      .get("http://localhost:5000/api/events")
+      .get(`${import.meta.env.VITE_API_URL}/api/events`)
       .then((response) => {
         const data = Array.isArray(response.data) ? response.data : response.data.data;
         setEventList(data || []);
