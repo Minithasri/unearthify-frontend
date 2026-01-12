@@ -1,102 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
 import { Button } from "@/components/ui/button";
 import { Filter } from "lucide-react";
-
-import a from "../assets/events/classical.jpg";
-import b from "../assets/events/folk art.jpg";
-import c from "../assets/events/karnatic.jpg";
-import d from "../assets/events/hand.png";
-import e from "../assets/events/kathak.jpg";
-import f from "../assets/events/artisan-weaving.jpg";
-import g from "../assets/events/Hindu-Temple.jpg";
-import h from "../assets/events/tabla.jpg";
+import axios from "axios";
 
 const Events = () => {
   const [selectedLocation, setSelectedLocation] = useState("all");
 
+  const [eventList, setEventList] = useState<any[]>([]);
+
+  const getImageUrl = (imagePath: string) => {
+    if (!imagePath) return "";
+    if (imagePath.startsWith("http")) return imagePath;
+    const cleanPath = imagePath.startsWith("/") ? imagePath.substring(1) : imagePath;
+    return `http://localhost:5000/${cleanPath}`;
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/events")
+      .then((response) => {
+        const data = Array.isArray(response.data) ? response.data : response.data.data;
+        setEventList(data || []);
+      })
+      .catch((error) => {
+        console.error("Error fetching events:", error);
+      });
+  }, []);
+
   const locations = [
     "All Locations",
-    "Delhi",
-    "Mumbai",
-    "Bangalore",
-    "Chennai",
-    "Kolkata",
-  ];
-
-  const events = [
-    {
-      title: "Classical Dance Festival",
-      date: "March 15, 2026",
-      location: "Delhi",
-      image: a,
-      description:
-        "A celebration of India's rich classical dance heritage featuring performances from across the country.",
-    },
-    {
-      title: "Folk Art Exhibition",
-      date: "March 22, 2026",
-      location: "Mumbai",
-      image: b,
-      description:
-        "Discover the vibrant world of Indian folk art with works from renowned artists.",
-    },
-    {
-      title: "Carnatic Music Concert",
-      date: "April 5, 2026",
-      location: "Chennai",
-      image: c,
-      description:
-        "An evening of soulful Carnatic music performed by legendary musicians.",
-    },
-    {
-      title: "Handicraft Fair",
-      date: "April 12, 2026",
-      location: "Bangalore",
-      image: d,
-      description:
-        "Explore traditional handicrafts and meet the artisans behind these beautiful creations.",
-    },
-    {
-      title: "Kathak Performance",
-      date: "April 20, 2026",
-      location: "Delhi",
-      image: e,
-      description:
-        "Experience the grace and rhythm of Kathak dance by renowned performers.",
-    },
-    {
-      title: "Textile & Weaving Workshop",
-      date: "May 3, 2026",
-      location: "Mumbai",
-      image: f,
-      description:
-        "Learn traditional weaving techniques from master weavers in this hands-on workshop.",
-    },
-    {
-      title: "Temple Architecture Tour",
-      date: "May 15, 2026",
-      location: "Chennai",
-      image: g,
-      description:
-        "Guided tour exploring the architectural marvels of ancient South Indian temples.",
-    },
-    {
-      title: "Tabla & Percussion Festival",
-      date: "May 22, 2026",
-      location: "Kolkata",
-      image: h,
-      description:
-        "Celebrate the rhythmic beauty of Indian percussion instruments with master performers.",
-    },
+    ...new Set(eventList.map((event) => event.location)),
   ];
 
   const filteredEvents =
     selectedLocation === "all"
-      ? events
-      : events.filter(
+      ? eventList
+      : eventList.filter(
           (event) =>
             event.location.toLowerCase() === selectedLocation.toLowerCase()
         );
@@ -165,7 +107,10 @@ const Events = () => {
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <EventCard {...event} />
+                <EventCard 
+                  {...event} 
+                  image={getImageUrl(event.image || event.eventImage)} 
+                />
               </div>
             ))}
           </div>

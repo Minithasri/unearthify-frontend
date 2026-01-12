@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
+import axios from "axios";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,7 @@ const Contribute = () => {
   const [errors, setErrors] = useState<any>({});
   const [touched, setTouched] = useState<any>({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
     const newErrors: any = {};
@@ -149,14 +150,26 @@ const Contribute = () => {
     setErrors(newErrors);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const newErrors = validateForm();
     if (Object.keys(newErrors).length === 0) {
-      setShowSuccess(true);
-      // Reset form
-      setFormData({ name: "", mobile: "", type: "", description: "" });
-      setErrors({});
-      setTouched({});
+      setIsSubmitting(true);
+      try {
+        const response = await axios.post("http://localhost:5000/api/contribute", formData);
+        
+        if (response.status === 200 || response.status === 201) {
+          setShowSuccess(true);
+          // Reset form
+          setFormData({ name: "", mobile: "", type: "", description: "" });
+          setErrors({});
+          setTouched({});
+        }
+      } catch (error) {
+        console.error("Error submitting contribution:", error);
+        alert("Failed to submit contribution. Please try again later.");
+      } finally {
+        setIsSubmitting(false);
+      }
     } else {
       setErrors(newErrors);
     }
@@ -310,10 +323,11 @@ const Contribute = () => {
               <Button
                 onClick={handleSubmit}
                 size="lg"
+                disabled={isSubmitting}
                 className="w-full bg-[#83261d] hover:bg-[#83261d]/90"
               >
                 <CheckCircle2 className="mr-2" size={20} />
-                Submit Contribution
+                {isSubmitting ? "Submitting..." : "Submit Contribution"}
               </Button>
             </div>
           </div>

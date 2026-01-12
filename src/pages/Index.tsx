@@ -15,12 +15,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import heroBanner from "@/assets/hero-banner.jpg";
-import rukmini from "../assets/artistImage/rukmini-devi-arundale.jpg";
-import devi from "../assets/artistImage/Baua Devi.jpg";
-import utrapra from "../assets/artistImage/pandit-uttra.jpg";
-
-import a from "../assets/events/classical.jpg";
-import b from "../assets/events/folk art.jpg";
 import ArtFormCard from "@/components/ArtFormCard";
 
 import Kathakali from "../assets/dance/kathakali.jpg";
@@ -28,6 +22,7 @@ import silambattam from "../assets/martial/silambattam-course-shara.jpg";
 import nathaswaram from "../assets/music/nathaswaram.jpg";
 
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,76 +44,44 @@ const Index = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const featuredArtists = [
-    {
-      id: 1,
-      name: "Rukmini Devi Arundale",
-      artForm: "Bharatanatyam Dance",
-      region: "Tamil Nadu",
-      image: rukmini,
-      bio: "Rukmini Devi Arundale was an Indian classical dancer and the key figure who revived and redefined Bharatanatyam in the 20th century. She founded Kalakshetra in Chennai, setting new artistic standards in dance, music, and traditional arts.",
-    },
-    {
-      id: 2,
-      name: "Baua Devi",
-      artForm: "Madhubani Painting",
-      region: "Bihar",
-      image: devi,
-      bio: "Baua Devi is a legendary Madhubani (Mithila) artist from Bihar, known for preserving traditional motifs through her vibrant, intricate paintings. She is one of the first women to gain national recognition for Mithila art and has been honoured with the Padma Shri.",
-    },
-    {
-      id: 3,
-      name: "Pandit Birju Maharaj",
-      artForm: "Kathak Dance",
-      region: "Uttar Pradesh",
-      image: utrapra,
-      bio: "Pandit Birju Maharaj was a legendary Kathak master known for his exceptional grace, storytelling, and rhythmic brilliance. As the torchbearer of the Lucknow gharana, he revolutionized Kathak through his choreography, teaching, and global performances.",
-    },
-  ];
-  const artForms = [
-    {
-      id: 1,
-      title: "Kathakali",
-      category: "dance",
-      image: Kathakali,
-      description:
-        "Classical and folk traditions like Bharatanatyam, Kathak, Kuchipudi.",
-    },
-    {
-      id: 2,
-      title: "Silambam",
-      category: "martial",
-      image: silambattam,
-      description:
-        "Kalaripayattu, Gatka & ancient Indian warrior art traditions.",
-    },
-    {
-      id: 3,
-      title: "Nadaswaram",
-      category: "music",
-      image: nathaswaram,
-      description:
-        "Hindustani & Carnatic traditions with instruments like Tabla & Sitar.",
-    },
-  ];
-  const upcomingEvents = [
-    {
-      title: "Classical Dance Festival",
-      date: "March 15, 2026",
-      location: "Delhi",
-      image: a,
-      description:
-        "A celebration of India's rich classical dance heritage featuring performances from across the country.",
-    },
-    {
-      title: "Folk Art Exhibition",
-      date: "March 22, 2026",
-      location: "Mumbai",
-      image: b,
-      description:
-        "Discover the vibrant world of Indian folk art with works from renowned artists.",
-    },
-  ];
+  const [artistList, setArtistList] = useState<any[]>([]);
+  const [artFormList, setArtFormList] = useState<any[]>([]);
+  const [eventList, setEventList] = useState<any[]>([]);
+
+  const getImageUrl = (imagePath: string) => {
+    if (!imagePath) return "";
+    if (imagePath.startsWith("http")) return imagePath;
+    const cleanPath = imagePath.startsWith("/") ? imagePath.substring(1) : imagePath;
+    return `http://localhost:5000/${cleanPath}`;
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/artists")
+      .then((response) => {
+        const data = Array.isArray(response.data) ? response.data : response.data.data;
+        setArtistList(data || []);
+      })
+      .catch((error) => console.error("Error fetching artists:", error));
+
+    axios
+      .get("http://localhost:5000/api/artforms")
+      .then((response) => {
+        const data = Array.isArray(response.data) ? response.data : response.data.data;
+        setArtFormList(data || []);
+      })
+      .catch((error) => console.error("Error fetching art forms:", error));
+
+    axios
+      .get("http://localhost:5000/api/events")
+      .then((response) => {
+        const data = Array.isArray(response.data) ? response.data : response.data.data;
+        setEventList(data || []);
+      })
+      .catch((error) => console.error("Error fetching events:", error));
+  }, []);
+
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -214,10 +177,12 @@ const Index = () => {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredArtists.map((artist) => (
+          {artistList.slice(0, 3).map((artist) => (
             <ArtistCard
-              key={artist.id}
+              key={artist._id || artist.id}
               {...artist}
+              image={getImageUrl(artist.image || artist.artistImage)}
+              region={artist.state || artist.region}
               onClick={() => setSelectedArtist(artist)}
             />
           ))}
@@ -245,13 +210,13 @@ const Index = () => {
         </div>
         <div>
           <div className="grid md:grid-cols-3 gap-6 grid-cols-1">
-            {artForms.map((item) => (
+            {artFormList.slice(0, 3).map((item) => (
               <ArtFormCard
-                key={item.id}
+                key={item._id || item.id}
                 title={item.title}
                 category={item.category}
                 description={item.description}
-                image={item.image}
+                image={getImageUrl(item.image || item.artFormImage)}
               />
             ))}
           </div>
@@ -280,8 +245,12 @@ const Index = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {upcomingEvents.map((event, index) => (
-              <EventCard key={index} {...event} />
+            {eventList.slice(0, 2).map((event, index) => (
+              <EventCard 
+                key={index} 
+                {...event} 
+                image={getImageUrl(event.image || event.eventImage)} 
+              />
             ))}
           </div>
         </div>
@@ -328,7 +297,7 @@ const Index = () => {
             <div className="space-y-4">
               <div className="aspect-video rounded-lg overflow-hidden bg-muted">
                 <img
-                  src={selectedArtist.image}
+                  src={getImageUrl(selectedArtist.image || selectedArtist.artistImage)}
                   alt={selectedArtist.name}
                   className="w-full h-full object-cover"
                 />
